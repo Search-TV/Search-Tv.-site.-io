@@ -1,0 +1,1915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AB Siddique - Excel & Power BI Expert</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Custom Gradients */
+        .gradient-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .gradient-secondary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .gradient-tertiary {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .gradient-excel {
+            background: linear-gradient(135deg, #107C41 0%, #0F5132 100%);
+        }
+        
+        .gradient-powerbi {
+            background: linear-gradient(135deg, #F2C811 0%, #E6B800 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        .slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        .bounce-in {
+            animation: bounceIn 1s ease-out;
+        }
+        
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .pulse-glow {
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        @keyframes bounceIn {
+            0% { 
+                opacity: 0; 
+                transform: scale(0.3); 
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.05); 
+            }
+            70% { 
+                transform: scale(0.9); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: scale(1); 
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px); 
+            }
+            50% { 
+                transform: translateY(-20px); 
+            }
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(102, 126, 234, 0.4); 
+            }
+            50% { 
+                box-shadow: 0 0 40px rgba(102, 126, 234, 0.8); 
+            }
+        }
+        
+        /* Interactive Elements */
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        
+        .btn-hover {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-hover:hover::before {
+            left: 100%;
+        }
+        
+        .section-hidden {
+            display: none;
+        }
+        
+        .section-active {
+            display: block;
+            animation: fadeIn 0.6s ease-in;
+        }
+        
+        .nav-active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+        }
+        
+        /* Particle Background */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: particleFloat 15s infinite linear;
+        }
+        
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Skill Progress Bars */
+        .skill-bar {
+            position: relative;
+            background: #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 12px;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 30px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-30px); }
+            100% { transform: translateX(400px); }
+        }
+        
+        /* Testimonial Cards */
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Portfolio Filter */
+        .filter-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        /* Pricing Cards */
+        .pricing-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #4facfe);
+            background-size: 400% 400%;
+            animation: gradientShift 3s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        /* Contact Form */
+        .form-input {
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15);
+        }
+        
+        /* Loading Animation */
+        .loading-dots {
+            display: inline-block;
+        }
+        
+        .loading-dots::after {
+            content: '';
+            animation: dots 1.5s steps(5, end) infinite;
+        }
+        
+        @keyframes dots {
+            0%, 20% { content: ''; }
+            40% { content: '.'; }
+            60% { content: '..'; }
+            80%, 100% { content: '...'; }
+        }
+        
+        /* Mobile Responsive Adjustments */
+        @media (max-width: 768px) {
+            .card-hover:hover {
+                transform: translateY(-8px) scale(1.01);
+            }
+            
+            .particle {
+                display: none;
+            }
+        }
+        
+        /* Excel and Power BI Brand Colors */
+        .excel-color { color: #107C41; }
+        .powerbi-color { color: #F2C811; }
+        .excel-bg { background-color: #107C41; }
+        .powerbi-bg { background-color: #F2C811; }
+        
+        /* Interactive Dashboard Preview */
+        .dashboard-preview {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border: 2px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dashboard-preview::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            animation: rotate 10s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Service Icons Animation */
+        .service-icon {
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .service-icon:hover {
+            transform: scale(1.2) rotate(10deg);
+        }
+        
+        /* Statistics Counter Animation */
+        .stat-number {
+            font-variant-numeric: tabular-nums;
+        }
+        
+        /* Glowing Border Effect */
+        .glow-border {
+            position: relative;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            padding: 2px;
+            border-radius: 12px;
+        }
+        
+        .glow-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            padding: 2px;
+            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #4facfe);
+            border-radius: inherit;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            animation: borderGlow 3s linear infinite;
+        }
+        
+        @keyframes borderGlow {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(180deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-lg fixed w-full top-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 gradient-primary rounded-xl flex items-center justify-center pulse-glow">
+                        <span class="text-white font-bold text-2xl">📊</span>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-bold font-poppins gradient-text">DataViz Analytics</span>
+                        <p class="text-xs text-gray-500">Excel & Power BI Expert</p>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex space-x-2">
+                    <button onclick="showSection('home')" class="nav-btn nav-active px-6 py-3 rounded-xl font-medium transition-all btn-hover">Home</button>
+                    <button onclick="showSection('portfolio')" class="nav-btn px-6 py-3 rounded-xl font-medium transition-all hover:bg-gray-100 btn-hover">Portfolio</button>
+                    <button onclick="showSection('services')" class="nav-btn px-6 py-3 rounded-xl font-medium transition-all hover:bg-gray-100 btn-hover">Services & Pricing</button>
+                    <button onclick="showSection('about')" class="nav-btn px-6 py-3 rounded-xl font-medium transition-all hover:bg-gray-100 btn-hover">About</button>
+                    <button onclick="showSection('contact')" class="nav-btn px-6 py-3 rounded-xl font-medium transition-all hover:bg-gray-100 btn-hover">Contact</button>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <button class="md:hidden p-2" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="md:hidden hidden pb-4 space-y-2">
+                <button onclick="showSection('home')" class="block w-full text-left px-4 py-3 hover:bg-gray-100 rounded-lg transition-all">Home</button>
+                <button onclick="showSection('portfolio')" class="block w-full text-left px-4 py-3 hover:bg-gray-100 rounded-lg transition-all">Portfolio</button>
+                <button onclick="showSection('services')" class="block w-full text-left px-4 py-3 hover:bg-gray-100 rounded-lg transition-all">Services & Pricing</button>
+                <button onclick="showSection('about')" class="block w-full text-left px-4 py-3 hover:bg-gray-100 rounded-lg transition-all">About</button>
+                <button onclick="showSection('contact')" class="block w-full text-left px-4 py-3 hover:bg-gray-100 rounded-lg transition-all">Contact</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section-active pt-20 relative">
+        <!-- Particle Background -->
+        <div class="particles">
+            <div class="particle" style="left: 10%; width: 4px; height: 4px; animation-delay: 0s;"></div>
+            <div class="particle" style="left: 20%; width: 6px; height: 6px; animation-delay: 2s;"></div>
+            <div class="particle" style="left: 30%; width: 3px; height: 3px; animation-delay: 4s;"></div>
+            <div class="particle" style="left: 40%; width: 5px; height: 5px; animation-delay: 6s;"></div>
+            <div class="particle" style="left: 50%; width: 4px; height: 4px; animation-delay: 8s;"></div>
+            <div class="particle" style="left: 60%; width: 6px; height: 6px; animation-delay: 10s;"></div>
+            <div class="particle" style="left: 70%; width: 3px; height: 3px; animation-delay: 12s;"></div>
+            <div class="particle" style="left: 80%; width: 5px; height: 5px; animation-delay: 14s;"></div>
+            <div class="particle" style="left: 90%; width: 4px; height: 4px; animation-delay: 16s;"></div>
+        </div>
+        
+        <div class="gradient-primary min-h-screen flex items-center relative z-10">
+            <div class="max-w-7xl mx-auto px-4 py-20">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="text-white slide-up">
+                        <div class="mb-6">
+                            <span class="bg-white/20 text-white px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm">
+                                🚀 Data Analytics Expert
+                            </span>
+                        </div>
+                        
+                        <h1 class="text-5xl lg:text-7xl font-bold font-poppins mb-8 leading-tight">
+                            Transform Your 
+                            <span class="text-yellow-300 relative">
+                                Data
+                                <svg class="absolute -bottom-2 left-0 w-full h-3" viewBox="0 0 200 12" fill="none">
+                                    <path d="M2 10C50 2 100 2 198 10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                                </svg>
+                            </span>
+                            Into Powerful 
+                            <span class="gradient-text bg-gradient-to-r from-pink-300 to-yellow-300 bg-clip-text text-transparent">
+                                Insights
+                            </span>
+                        </h1>
+                        
+                        <p class="text-xl lg:text-2xl mb-10 text-gray-200 leading-relaxed">
+                            Expert Microsoft Excel & Power BI solutions that turn complex data into clear, 
+                            actionable business intelligence. Let's unlock the potential hidden in your data.
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-6">
+                            <button onclick="showSection('portfolio')" class="group bg-white text-purple-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-gray-100 transition-all btn-hover bounce-in shadow-2xl">
+                                <span class="flex items-center justify-center">
+                                    View My Work
+                                    <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                    </svg>
+                                </span>
+                            </button>
+                            <button onclick="showSection('contact')" class="group border-2 border-white text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-white hover:text-purple-600 transition-all btn-hover">
+                                <span class="flex items-center justify-center">
+                                    Get Started
+                                    <svg class="ml-2 w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                                    </svg>
+                                </span>
+                            </button>
+                        </div>
+                        
+                        <!-- Stats -->
+                        <div class="grid grid-cols-3 gap-8 mt-16">
+                            <div class="text-center">
+                                <div class="text-4xl font-bold stat-number" data-target="150">0</div>
+                                <div class="text-gray-300 text-sm">Projects Completed</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-4xl font-bold stat-number" data-target="98">0</div>
+                                <div class="text-gray-300 text-sm">Client Satisfaction %</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-4xl font-bold stat-number" data-target="5">0</div>
+                                <div class="text-gray-300 text-sm">Years Experience</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative float">
+                        <!-- Interactive Dashboard Preview -->
+                        <div class="dashboard-preview bg-white rounded-3xl p-8 shadow-2xl relative z-10">
+                            <div class="flex items-center justify-between mb-8">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-gray-800 font-poppins">Analytics Dashboard</h3>
+                                    <p class="text-gray-500">Real-time Business Intelligence</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <div class="w-4 h-4 bg-red-400 rounded-full"></div>
+                                    <div class="w-4 h-4 bg-yellow-400 rounded-full"></div>
+                                    <div class="w-4 h-4 bg-green-400 rounded-full"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Revenue Card -->
+                            <div class="bg-gradient-to-r from-green-400 to-green-600 rounded-2xl p-6 mb-6 text-white">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <p class="text-green-100 text-sm">Total Revenue</p>
+                                        <p class="text-3xl font-bold">$847,392</p>
+                                        <p class="text-green-200 text-sm">↗ +23.5% from last month</p>
+                                    </div>
+                                    <div class="bg-white/20 p-3 rounded-xl">
+                                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Progress Bars -->
+                            <div class="space-y-6">
+                                <div>
+                                    <div class="flex justify-between items-center mb-3">
+                                        <span class="text-gray-700 font-medium">Sales Target</span>
+                                        <span class="text-2xl font-bold text-blue-600">87%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress bg-gradient-to-r from-blue-400 to-blue-600" style="width: 87%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between items-center mb-3">
+                                        <span class="text-gray-700 font-medium">Customer Satisfaction</span>
+                                        <span class="text-2xl font-bold text-purple-600">94%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress bg-gradient-to-r from-purple-400 to-purple-600" style="width: 94%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between items-center mb-3">
+                                        <span class="text-gray-700 font-medium">Market Growth</span>
+                                        <span class="text-2xl font-bold text-orange-600">76%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress bg-gradient-to-r from-orange-400 to-orange-600" style="width: 76%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Mini Charts -->
+                            <div class="grid grid-cols-3 gap-4 mt-8">
+                                <div class="text-center p-4 bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl">
+                                    <div class="text-2xl font-bold text-pink-600">2.4K</div>
+                                    <div class="text-sm text-pink-500">New Leads</div>
+                                    <div class="text-xs text-green-500">↗ +12%</div>
+                                </div>
+                                <div class="text-center p-4 bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-xl">
+                                    <div class="text-2xl font-bold text-indigo-600">847</div>
+                                    <div class="text-sm text-indigo-500">Conversions</div>
+                                    <div class="text-xs text-green-500">↗ +8%</div>
+                                </div>
+                                <div class="text-center p-4 bg-gradient-to-br from-teal-50 to-teal-100 rounded-xl">
+                                    <div class="text-2xl font-bold text-teal-600">96.2%</div>
+                                    <div class="text-sm text-teal-500">Uptime</div>
+                                    <div class="text-xs text-green-500">↗ +0.3%</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating Elements -->
+                        <div class="absolute -top-6 -right-6 w-24 h-24 gradient-secondary rounded-2xl flex items-center justify-center text-white text-2xl font-bold shadow-2xl float" style="animation-delay: 1s;">
+                            📈
+                        </div>
+                        <div class="absolute -bottom-6 -left-6 w-20 h-20 gradient-tertiary rounded-2xl flex items-center justify-center text-white text-xl font-bold shadow-2xl float" style="animation-delay: 2s;">
+                            💡
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section-hidden pt-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 py-20">
+            <div class="text-center mb-16 slide-up">
+                <span class="bg-purple-100 text-purple-600 px-4 py-2 rounded-full text-sm font-medium mb-4 inline-block">
+                    🎯 My Work
+                </span>
+                <h2 class="text-5xl font-bold font-poppins text-gray-800 mb-6">Portfolio Showcase</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Discover how I've transformed complex data into actionable insights for businesses across various industries
+                </p>
+            </div>
+            
+            <!-- Portfolio Filter -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button onclick="filterPortfolio('all')" class="filter-btn active px-6 py-3 rounded-xl font-medium transition-all bg-gray-200 text-gray-700">
+                    All Projects
+                </button>
+                <button onclick="filterPortfolio('excel')" class="filter-btn px-6 py-3 rounded-xl font-medium transition-all bg-gray-200 text-gray-700">
+                    Excel Solutions
+                </button>
+                <button onclick="filterPortfolio('powerbi')" class="filter-btn px-6 py-3 rounded-xl font-medium transition-all bg-gray-200 text-gray-700">
+                    Power BI Reports
+                </button>
+                <button onclick="filterPortfolio('integrated')" class="filter-btn px-6 py-3 rounded-xl font-medium transition-all bg-gray-200 text-gray-700">
+                    Integrated Solutions
+                </button>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Excel Project 1 -->
+                <div class="portfolio-item excel bg-white rounded-2xl shadow-lg overflow-hidden card-hover glow-border">
+                    <div class="gradient-excel h-56 flex items-center justify-center relative">
+                        <div class="text-white text-center z-10">
+                            <div class="text-6xl mb-4">📊</div>
+                            <h3 class="text-2xl font-bold">Excel Dashboard</h3>
+                            <p class="text-green-200">Advanced Analytics</p>
+                        </div>
+                        <div class="absolute inset-0 bg-black/20"></div>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-2xl font-bold mb-3 excel-color font-poppins">Financial KPI Dashboard</h4>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Comprehensive Excel dashboard featuring automated KPI tracking, dynamic charts, 
+                            and real-time financial metrics for a Fortune 500 company.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Excel VBA</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Pivot Tables</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Macros</span>
+                            <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Automation</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="text-sm text-gray-500">
+                                <span class="font-medium">Client:</span> Financial Services
+                            </div>
+                            <button class="gradient-excel text-white px-6 py-2 rounded-lg hover:opacity-90 transition-all btn-hover">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Power BI Project 1 -->
+                <div class="portfolio-item powerbi bg-white rounded-2xl shadow-lg overflow-hidden card-hover glow-border">
+                    <div class="gradient-powerbi h-56 flex items-center justify-center relative">
+                        <div class="text-white text-center z-10">
+                            <div class="text-6xl mb-4">
+                                <iframe title="CRM Data Analysis" width="400" height="300" src="https://app.powerbi.com/view?r=eyJrIjoiMzA3YzAyOTQtNTc5YS00MjdiLTgyMWQtYzJiZjRhZTBkNTc3IiwidCI6IjIwYjliYTY2LWExMWQtNDkzOC1iNzk0LWYyZTg1YjEzODgxOCIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+                            </div>
+                            
+                        </div>
+                        <div class="absolute inset-0 bg-black/20"></div>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-2xl font-bold mb-3 powerbi-color font-poppins">Sales Performance Analytics</h4>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Interactive Power BI solution with real-time data connections, custom DAX measures, 
+                            and drill-through capabilities for comprehensive sales analysis.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Power BI</span>
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">DAX</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">SQL</span>
+                            <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm font-medium">Real-time</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="text-sm text-gray-500">
+                                <span class="font-medium">Client:</span> Retail Chain
+                            </div>
+                            <button class="gradient-powerbi text-white px-6 py-2 rounded-lg hover:opacity-90 transition-all btn-hover">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Power BI Project 2 -->
+                <div class="portfolio-item powerbi bg-white rounded-2xl shadow-lg overflow-hidden card-hover glow-border">
+                    <div class="gradient-powerbi h-56 flex items-center justify-center relative">
+                        <div class="text-white text-center z-10">
+                            <div class="text-6xl mb-4">
+                                <iframe title="CRM Data Analysis" width="400" height="300" src="https://app.powerbi.com/view?r=eyJrIjoiMzA3YzAyOTQtNTc5YS00MjdiLTgyMWQtYzJiZjRhZTBkNTc3IiwidCI6IjIwYjliYTY2LWExMWQtNDkzOC1iNzk0LWYyZTg1YjEzODgxOCIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+                            </div>
+                            
+                        </div>
+                        <div class="absolute inset-0 bg-black/20"></div>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-2xl font-bold mb-3 powerbi-color font-poppins">Sales Performance Analytics</h4>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Interactive Power BI solution with real-time data connections, custom DAX measures, 
+                            and drill-through capabilities for comprehensive sales analysis.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Power BI</span>
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">DAX</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">SQL</span>
+                            <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm font-medium">Real-time</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="text-sm text-gray-500">
+                                <span class="font-medium">Client:</span> Retail Chain
+                            </div>
+                            <button class="gradient-powerbi text-white px-6 py-2 rounded-lg hover:opacity-90 transition-all btn-hover">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Integrated Project -->
+                <div class="portfolio-item integrated bg-white rounded-2xl shadow-lg overflow-hidden card-hover glow-border">
+                    <div class="gradient-primary h-56 flex items-center justify-center relative">
+                        <div class="text-white text-center z-10">
+                            <div class="text-6xl mb-4">🔄</div>
+                            <h3 class="text-2xl font-bold">Integrated Solution</h3>
+                            <p class="text-purple-200">End-to-End Analytics</p>
+                        </div>
+                        <div class="absolute inset-0 bg-black/20"></div>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-2xl font-bold mb-3 text-purple-600 font-poppins">Complete Analytics Platform</h4>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Full data pipeline from Excel data processing to Power BI visualization, 
+                            including automated reporting and executive dashboards.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Excel</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Power BI</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">Automation</span>
+                            <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm font-medium">Integration</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="text-sm text-gray-500">
+                                <span class="font-medium">Client:</span> Manufacturing
+                            </div>
+                            <button class="gradient-primary text-white px-6 py-2 rounded-lg hover:opacity-90 transition-all btn-hover">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Excel Project 2 -->
+                <div class="portfolio-item excel bg-white rounded-2xl shadow-lg overflow-hidden card-hover glow-border">
+                    <div class="gradient-excel h-56 flex items-center justify-center relative">
+                        <div class="text-white text-center z-10">
+                            <div class="text-6xl mb-4">📋</div>
+                            <h3 class="text-2xl font-bold">Excel Automation</h3>
+                            <p class="text-green-200">Process Optimization</p>
+                        </div>
+                        <div class="absolute inset-0 bg-black/20"></div>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-2xl font-bold mb-3 excel-color font-poppins">Inventory Management System</h4>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Automated inventory tracking system with predictive analytics, 
+                            reorder alerts, and comprehensive reporting capabilities.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">VBA</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Forecasting</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Alerts</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="text-sm text-gray-500">
+                                <span class="font-medium">Client:</span> E-commerce
+                            </div>
+                            <button class="gradient-excel text-white px-6 py-2 rounded-lg hover:opacity-90 transition-all btn-hover">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Power BI Project 2 -->
+                <div class="portfolio-item powerbi bg-white rounded-2xl shadow-lg overflow-hidden card-hover glow-border">
+                    <div class="gradient-powerbi h-56 flex items-center justify-center relative">
+                        <div class="text-white text-center z-10">
+                            <div class="text-6xl mb-4">🎯</div>
+                            <h3 class="text-2xl font-bold">Marketing Analytics</h3>
+                            <p class="text-yellow-200">Campaign Performance</p>
+                        </div>
+                        <div class="absolute inset-0 bg-black/20"></div>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-2xl font-bold mb-3 powerbi-color font-poppins">Digital Marketing Dashboard</h4>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Multi-channel marketing performance dashboard with ROI tracking, 
+                            customer journey analysis, and campaign optimization insights.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Power BI</span>
+                            <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm font-medium">Marketing</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">ROI</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="text-sm text-gray-500">
+                                <span class="font-medium">Client:</span> Digital Agency
+                            </div>
+                            <button class="gradient-powerbi text-white px-6 py-2 rounded-lg hover:opacity-90 transition-all btn-hover">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Integrated Project 2 -->
+                <div class="portfolio-item integrated bg-white rounded-2xl shadow-lg overflow-hidden card-hover glow-border">
+                    <div class="gradient-secondary h-56 flex items-center justify-center relative">
+                        <div class="text-white text-center z-10">
+                            <div class="text-6xl mb-4">🏥</div>
+                            <h3 class="text-2xl font-bold">Healthcare Analytics</h3>
+                            <p class="text-pink-200">Patient Insights</p>
+                        </div>
+                        <div class="absolute inset-0 bg-black/20"></div>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-2xl font-bold mb-3 text-pink-600 font-poppins">Patient Care Analytics</h4>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Comprehensive healthcare analytics solution combining patient data processing 
+                            in Excel with interactive Power BI dashboards for clinical insights.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Excel</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Power BI</span>
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">Healthcare</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="text-sm text-gray-500">
+                                <span class="font-medium">Client:</span> Hospital Network
+                            </div>
+                            <button class="gradient-secondary text-white px-6 py-2 rounded-lg hover:opacity-90 transition-all btn-hover">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services & Pricing Section -->
+    <section id="services" class="section-hidden pt-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 py-20">
+            <!-- Services Header -->
+            <div class="text-center mb-20 slide-up">
+                <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-medium mb-4 inline-block">
+                    🛠️ What I Offer
+                </span>
+                <h2 class="text-5xl font-bold font-poppins text-gray-800 mb-6">Services & Pricing</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Comprehensive data analytics solutions tailored to transform your business intelligence
+                </p>
+            </div>
+            
+            <!-- Services Grid -->
+            <div class="grid lg:grid-cols-2 gap-12 mb-20">
+                <!-- Excel Services -->
+                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-3xl p-10 shadow-xl card-hover">
+                    <div class="flex items-center mb-8">
+                        <div class="w-20 h-20 gradient-excel rounded-2xl flex items-center justify-center mr-6 service-icon">
+                            <span class="text-4xl text-white">📊</span>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold excel-color font-poppins">Excel Solutions</h3>
+                            <p class="text-gray-600 text-lg">Advanced spreadsheet automation & analytics</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <span class="text-green-500 mr-4 text-xl">✓</span>
+                                <span class="font-medium">Custom Dashboard Creation</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-green-500 mr-4 text-xl">✓</span>
+                                <span class="font-medium">VBA Automation & Macros</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-green-500 mr-4 text-xl">✓</span>
+                                <span class="font-medium">Advanced Formulas</span>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <span class="text-green-500 mr-4 text-xl">✓</span>
+                                <span class="font-medium">Data Cleaning & Transformation</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-green-500 mr-4 text-xl">✓</span>
+                                <span class="font-medium">Pivot Tables & Charts</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-green-500 mr-4 text-xl">✓</span>
+                                <span class="font-medium">Financial Modeling</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl p-6 mb-6">
+                        <div class="text-center">
+                            <div class="text-sm text-gray-500 mb-2">Starting from</div>
+                            <div class="text-4xl font-bold excel-color">$299</div>
+                            <div class="text-gray-600">per project</div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="showSection('contact')" class="w-full gradient-excel text-white py-4 rounded-2xl hover:opacity-90 transition-all font-bold text-lg btn-hover">
+                        Get Excel Help
+                    </button>
+                </div>
+                
+                <!-- Power BI Services -->
+                <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-3xl p-10 shadow-xl card-hover">
+                    <div class="flex items-center mb-8">
+                        <div class="w-20 h-20 gradient-powerbi rounded-2xl flex items-center justify-center mr-6 service-icon">
+                            <span class="text-4xl text-white">📈</span>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold powerbi-color font-poppins">Power BI Solutions</h3>
+                            <p class="text-gray-600 text-lg">Business intelligence & visualization</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <span class="text-yellow-500 mr-4 text-xl">✓</span>
+                                <span class="font-medium">Interactive Dashboards</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-yellow-500 mr-4 text-xl">✓</span>
+                                <span class="font-medium">Data Modeling & DAX</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-yellow-500 mr-4 text-xl">✓</span>
+                                <span class="font-medium">Real-time Connections</span>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <span class="text-yellow-500 mr-4 text-xl">✓</span>
+                                <span class="font-medium">Custom Visualizations</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-yellow-500 mr-4 text-xl">✓</span>
+                                <span class="font-medium">Report Automation</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-yellow-500 mr-4 text-xl">✓</span>
+                                <span class="font-medium">Mobile Optimization</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl p-6 mb-6">
+                        <div class="text-center">
+                            <div class="text-sm text-gray-500 mb-2">Starting from</div>
+                            <div class="text-4xl font-bold powerbi-color">$599</div>
+                            <div class="text-gray-600">per project</div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="showSection('contact')" class="w-full gradient-powerbi text-white py-4 rounded-2xl hover:opacity-90 transition-all font-bold text-lg btn-hover">
+                        Get Power BI Help
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Pricing Plans -->
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-bold font-poppins text-gray-800 mb-4">Choose Your Plan</h3>
+                <p class="text-xl text-gray-600">Flexible pricing options to fit your needs</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Starter Plan -->
+                <div class="pricing-card bg-white rounded-3xl p-8 shadow-xl border-2 border-gray-200 card-hover">
+                    <div class="text-center mb-8">
+                        <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl">🚀</span>
+                        </div>
+                        <h4 class="text-2xl font-bold text-gray-800 mb-2 font-poppins">Starter</h4>
+                        <div class="text-5xl font-bold text-blue-600 mb-2">$299</div>
+                        <p class="text-gray-600">Perfect for small projects</p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <span class="text-green-500 mr-3 text-xl">✓</span>
+                            <span>Basic Excel Dashboard</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-green-500 mr-3 text-xl">✓</span>
+                            <span>Simple Charts & Graphs</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-green-500 mr-3 text-xl">✓</span>
+                            <span>Data Cleaning</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-green-500 mr-3 text-xl">✓</span>
+                            <span>1 Revision Round</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-green-500 mr-3 text-xl">✓</span>
+                            <span>Email Support</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-green-500 mr-3 text-xl">✓</span>
+                            <span>5-7 Day Delivery</span>
+                        </li>
+                    </ul>
+                    
+                    <button onclick="showSection('contact')" class="w-full bg-blue-500 text-white py-4 rounded-2xl hover:bg-blue-600 transition-all font-bold text-lg btn-hover">
+                        Get Started
+                    </button>
+                </div>
+                
+                <!-- Professional Plan -->
+                <div class="pricing-card bg-white rounded-3xl p-8 shadow-xl border-2 border-purple-500 relative card-hover">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="gradient-primary text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
+                            Most Popular
+                        </span>
+                    </div>
+                    
+                    <div class="text-center mb-8">
+                        <div class="w-16 h-16 gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl text-white">⭐</span>
+                        </div>
+                        <h4 class="text-2xl font-bold text-gray-800 mb-2 font-poppins">Professional</h4>
+                        <div class="text-5xl font-bold text-purple-600 mb-2">$799</div>
+                        <p class="text-gray-600">Best for growing businesses</p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <span class="text-green-500 mr-3 text-xl">✓</span>
+                            <span>Advanced Excel + Power BI</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-green-500 mr-3 text-xl">✓</span>
+                            <span>Interactive Dashboards</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-green-500 mr-3 text-xl">✓</span>
+                            <span>VBA Automation</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-green-500 mr-3 text-xl">✓</span>
+                            <span>3 Revision Rounds</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-green-500 mr-3 text-xl">✓</span>
+                            <span>Priority Support</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-green-500 mr-3 text-xl">✓</span>
+                            <span>Training Session Included</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-green-500 mr-3 text-xl">✓</span>
+                            <span>3-5 Day Delivery</span>
+                        </li>
+                    </ul>
+                    
+                    <button onclick="showSection('contact')" class="w-full gradient-primary text-white py-4 rounded-2xl hover:opacity-90 transition-all font-bold text-lg btn-hover pulse-glow">
+                        Get Started
+                    </button>
+                </div>
+                
+                <!-- Enterprise Plan -->
+                <div class="pricing-card bg-white rounded-3xl p-8 shadow-xl border-2 border-gray-200 card-hover">
+                    <div class="text-center mb-8">
+                        <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl">🏢</span>
+                        </div>
+                        <h4 class="text-2xl font-bold text-gray-800 mb-2 font-poppins">Enterprise</h4>
+                        <div class="text-5xl font-bold text-orange-600 mb-2">$1,499</div>
+                        <p class="text-gray-600">Complete business solution</p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <span class="text-green-500 mr-3 text-xl">✓</span>
+                            <span>Complete Analytics Platform</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-green-500 mr-3 text-xl">✓</span>
+                            <span>Multiple Dashboards</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-green-500 mr-3 text-xl">✓</span>
+                            <span>Data Integration</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-green-500 mr-3 text-xl">✓</span>
+                            <span>Unlimited Revisions</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-green-500 mr-3 text-xl">✓</span>
+                            <span>24/7 Priority Support</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-green-500 mr-3 text-xl">✓</span>
+                            <span>Team Training & Documentation</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-green-500 mr-3 text-xl">✓</span>
+                            <span>1-3 Day Delivery</span>
+                        </li>
+                    </ul>
+                    
+                    <button onclick="showSection('contact')" class="w-full bg-orange-500 text-white py-4 rounded-2xl hover:bg-orange-600 transition-all font-bold text-lg btn-hover">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Additional Services -->
+            <div class="mt-20 bg-gradient-to-r from-gray-50 to-gray-100 rounded-3xl p-12">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold font-poppins text-gray-800 mb-4">Additional Services</h3>
+                    <p class="text-lg text-gray-600">Enhance your analytics with these premium add-ons</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white rounded-2xl p-6 text-center shadow-lg card-hover">
+                        <div class="w-12 h-12 gradient-primary rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-xl">🎓</span>
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-2">Training Sessions</h4>
+                        <p class="text-gray-600 text-sm mb-3">Learn to maintain and update your solutions</p>
+                        <div class="text-2xl font-bold text-purple-600">$199</div>
+                        <div class="text-sm text-gray-500">per session</div>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl p-6 text-center shadow-lg card-hover">
+                        <div class="w-12 h-12 gradient-secondary rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-xl">🔧</span>
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-2">Maintenance</h4>
+                        <p class="text-gray-600 text-sm mb-3">Ongoing support and updates</p>
+                        <div class="text-2xl font-bold text-pink-600">$99</div>
+                        <div class="text-sm text-gray-500">per month</div>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl p-6 text-center shadow-lg card-hover">
+                        <div class="w-12 h-12 gradient-tertiary rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-xl">📱</span>
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-2">Mobile Optimization</h4>
+                        <p class="text-gray-600 text-sm mb-3">Mobile-friendly dashboard versions</p>
+                        <div class="text-2xl font-bold text-blue-600">$299</div>
+                        <div class="text-sm text-gray-500">one-time</div>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl p-6 text-center shadow-lg card-hover">
+                        <div class="w-12 h-12 bg-gradient-to-r from-green-400 to-green-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-xl">⚡</span>
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-2">Rush Delivery</h4>
+                        <p class="text-gray-600 text-sm mb-3">24-48 hour project completion</p>
+                        <div class="text-2xl font-bold text-green-600">+50%</div>
+                        <div class="text-sm text-gray-500">of base price</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-hidden pt-20 bg-gradient-to-br from-gray-50 to-gray-100">
+        <div class="max-w-7xl mx-auto px-4 py-20">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="slide-up">
+                    <span class="bg-purple-100 text-purple-600 px-4 py-2 rounded-full text-sm font-medium mb-6 inline-block">
+                        👋 About Me
+                    </span>
+                    <h2 class="text-5xl font-bold font-poppins text-gray-800 mb-8">
+                        Turning Data Into 
+                        <span class="gradient-text">Strategic Advantage</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        I'm a passionate data analyst with over 5 years of experience transforming complex data 
+                        into actionable insights. My expertise lies in creating powerful Excel solutions and 
+                        stunning Power BI visualizations that drive business decisions and fuel growth.
+                    </p>
+                    
+                    <div class="space-y-6 mb-10">
+                        <div class="flex items-center">
+                            <div class="w-16 h-16 gradient-primary rounded-2xl flex items-center justify-center mr-6">
+                                <span class="text-white font-bold text-xl">5+</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl text-gray-800">Years of Experience</h4>
+                                <p class="text-gray-600">Specializing in data analytics and business intelligence</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-16 h-16 gradient-secondary rounded-2xl flex items-center justify-center mr-6">
+                                <span class="text-white font-bold text-xl">150+</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl text-gray-800">Projects Completed</h4>
+                                <p class="text-gray-600">Successful data solutions delivered across industries</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-16 h-16 gradient-tertiary rounded-2xl flex items-center justify-center mr-6">
+                                <span class="text-white font-bold text-xl">98%</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl text-gray-800">Client Satisfaction</h4>
+                                <p class="text-gray-600">Committed to delivering excellence in every project</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="showSection('contact')" class="gradient-primary text-white px-8 py-4 rounded-2xl hover:opacity-90 transition-all font-bold text-lg btn-hover">
+                            Let's Work Together
+                        </button>
+                        <button onclick="showSection('portfolio')" class="border-2 border-purple-600 text-purple-600 px-8 py-4 rounded-2xl hover:bg-purple-600 hover:text-white transition-all font-bold text-lg btn-hover">
+                            View My Work
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <!-- Skills Chart -->
+                    <div class="bg-white rounded-3xl p-10 shadow-2xl relative z-10 glow-border">
+                        <h3 class="text-2xl font-bold mb-8 text-center font-poppins">Technical Expertise</h3>
+                        
+                        <div class="space-y-8">
+                            <div>
+                                <div class="flex justify-between items-center mb-4">
+                                    <div class="flex items-center">
+                                        <span class="text-2xl mr-3">📊</span>
+                                        <span class="font-bold text-lg">Microsoft Excel</span>
+                                    </div>
+                                    <span class="text-2xl font-bold excel-color">95%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress gradient-excel" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between items-center mb-4">
+                                    <div class="flex items-center">
+                                        <span class="text-2xl mr-3">📈</span>
+                                        <span class="font-bold text-lg">Power BI</span>
+                                    </div>
+                                    <span class="text-2xl font-bold powerbi-color">92%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress gradient-powerbi" style="width: 92%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between items-center mb-4">
+                                    <div class="flex items-center">
+                                        <span class="text-2xl mr-3">🔍</span>
+                                        <span class="font-bold text-lg">Data Analysis</span>
+                                    </div>
+                                    <span class="text-2xl font-bold text-blue-600">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress bg-gradient-to-r from-blue-400 to-blue-600" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between items-center mb-4">
+                                    <div class="flex items-center">
+                                        <span class="text-2xl mr-3">⚙️</span>
+                                        <span class="font-bold text-lg">VBA Programming</span>
+                                    </div>
+                                    <span class="text-2xl font-bold text-purple-600">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress gradient-primary" style="width: 88%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between items-center mb-4">
+                                    <div class="flex items-center">
+                                        <span class="text-2xl mr-3">🗄️</span>
+                                        <span class="font-bold text-lg">SQL & Databases</span>
+                                    </div>
+                                    <span class="text-2xl font-bold text-indigo-600">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress bg-gradient-to-r from-indigo-400 to-indigo-600" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Certifications -->
+                        <div class="mt-10 pt-8 border-t border-gray-200">
+                            <h4 class="font-bold text-lg mb-6 text-center">Certifications & Achievements</h4>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="text-center p-4 bg-green-50 rounded-xl">
+                                    <div class="text-2xl mb-2">🏆</div>
+                                    <div class="text-sm font-medium text-green-700">Excel Expert</div>
+                                    <div class="text-xs text-green-600">Microsoft Certified</div>
+                                </div>
+                                <div class="text-center p-4 bg-yellow-50 rounded-xl">
+                                    <div class="text-2xl mb-2">📊</div>
+                                    <div class="text-sm font-medium text-yellow-700">Power BI Pro</div>
+                                    <div class="text-xs text-yellow-600">Microsoft Certified</div>
+                                </div>
+                                <div class="text-center p-4 bg-blue-50 rounded-xl">
+                                    <div class="text-2xl mb-2">🎯</div>
+                                    <div class="text-sm font-medium text-blue-700">Data Analyst</div>
+                                    <div class="text-xs text-blue-600">Associate Level</div>
+                                </div>
+                                <div class="text-center p-4 bg-purple-50 rounded-xl">
+                                    <div class="text-2xl mb-2">⭐</div>
+                                    <div class="text-sm font-medium text-purple-700">Top Rated</div>
+                                    <div class="text-xs text-purple-600">Freelancer</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Elements -->
+                    <div class="absolute -top-8 -right-8 w-24 h-24 gradient-secondary rounded-3xl flex items-center justify-center text-white text-3xl font-bold shadow-2xl float" style="animation-delay: 1s;">
+                        💼
+                    </div>
+                    <div class="absolute -bottom-8 -left-8 w-20 h-20 gradient-tertiary rounded-3xl flex items-center justify-center text-white text-2xl font-bold shadow-2xl float" style="animation-delay: 2s;">
+                        🚀
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonials -->
+            <div class="mt-20">
+                <div class="text-center mb-16">
+                    <h3 class="text-4xl font-bold font-poppins text-gray-800 mb-4">What Clients Say</h3>
+                    <p class="text-xl text-gray-600">Real feedback from satisfied customers</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="testimonial-card rounded-2xl p-8 text-white relative overflow-hidden">
+                        <div class="absolute inset-0 gradient-primary opacity-90"></div>
+                        <div class="relative z-10">
+                            <div class="text-4xl mb-4">⭐⭐⭐⭐⭐</div>
+                            <p class="text-lg mb-6 leading-relaxed">
+                                "The Excel dashboard completely transformed how we track our KPIs. 
+                                The automation saves us hours every week!"
+                            </p>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-xl">👨‍💼</span>
+                                </div>
+                                <div>
+                                    <div class="font-bold">Sarah Johnson</div>
+                                    <div class="text-sm opacity-80">CFO, TechCorp</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card rounded-2xl p-8 text-white relative overflow-hidden">
+                        <div class="absolute inset-0 gradient-secondary opacity-90"></div>
+                        <div class="relative z-10">
+                            <div class="text-4xl mb-4">⭐⭐⭐⭐⭐</div>
+                            <p class="text-lg mb-6 leading-relaxed">
+                                "Outstanding Power BI work! The visualizations are beautiful and 
+                                the insights have driven real business decisions."
+                            </p>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-xl">👩‍💼</span>
+                                </div>
+                                <div>
+                                    <div class="font-bold">Michael Chen</div>
+                                    <div class="text-sm opacity-80">Director, RetailPlus</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card rounded-2xl p-8 text-white relative overflow-hidden">
+                        <div class="absolute inset-0 gradient-tertiary opacity-90"></div>
+                        <div class="relative z-10">
+                            <div class="text-4xl mb-4">⭐⭐⭐⭐⭐</div>
+                            <p class="text-lg mb-6 leading-relaxed">
+                                "Professional, fast, and exactly what we needed. The integrated 
+                                solution works perfectly across our entire organization."
+                            </p>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-xl">👨‍🔬</span>
+                                </div>
+                                <div>
+                                    <div class="font-bold">Dr. Emily Rodriguez</div>
+                                    <div class="text-sm opacity-80">Research Lead, BioTech</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-hidden pt-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 py-20">
+            <div class="text-center mb-16 slide-up">
+                <span class="bg-green-100 text-green-600 px-4 py-2 rounded-full text-sm font-medium mb-4 inline-block">
+                    📞 Get In Touch
+                </span>
+                <h2 class="text-5xl font-bold font-poppins text-gray-800 mb-6">Let's Transform Your Data</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Ready to unlock the power of your data? Let's discuss your project and create something amazing together!
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <h3 class="text-3xl font-bold font-poppins mb-8">Contact Information</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center p-6 bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl card-hover">
+                            <div class="w-16 h-16 gradient-primary rounded-2xl flex items-center justify-center mr-6">
+                                <span class="text-white text-2xl">📧</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl text-gray-800">Email</h4>
+                                <p class="text-gray-600 text-lg">hello@datavizanalytics.com</p>
+                                <p class="text-sm text-gray-500">Response within 2 hours</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-6 bg-gradient-to-r from-green-50 to-green-100 rounded-2xl card-hover">
+                            <div class="w-16 h-16 gradient-secondary rounded-2xl flex items-center justify-center mr-6">
+                                <span class="text-white text-2xl">📱</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl text-gray-800">Phone</h4>
+                                <p class="text-gray-600 text-lg">+1 (555) 123-4567</p>
+                                <p class="text-sm text-gray-500">Available 9 AM - 6 PM EST</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-6 bg-gradient-to-r from-purple-50 to-purple-100 rounded-2xl card-hover">
+                            <div class="w-16 h-16 gradient-tertiary rounded-2xl flex items-center justify-center mr-6">
+                                <span class="text-white text-2xl">💼</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl text-gray-800">LinkedIn</h4>
+                                <p class="text-gray-600 text-lg">linkedin.com/in/datavizanalytics</p>
+                                <p class="text-sm text-gray-500">Professional network</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-6 bg-gradient-to-r from-orange-50 to-orange-100 rounded-2xl card-hover">
+                            <div class="w-16 h-16 bg-gradient-to-r from-orange-400 to-orange-600 rounded-2xl flex items-center justify-center mr-6">
+                                <span class="text-white text-2xl">⏰</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl text-gray-800">Response Time</h4>
+                                <p class="text-gray-600 text-lg">Within 24 hours</p>
+                                <p class="text-sm text-gray-500">Usually much faster!</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Stats -->
+                    <div class="bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl p-8 mt-8">
+                        <h4 class="font-bold text-xl text-gray-800 mb-6 text-center">Why Choose Me?</h4>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-purple-600 mb-2">24h</div>
+                                <div class="text-sm text-gray-600">Average Response</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-green-600 mb-2">98%</div>
+                                <div class="text-sm text-gray-600">Satisfaction Rate</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-blue-600 mb-2">150+</div>
+                                <div class="text-sm text-gray-600">Projects Done</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-orange-600 mb-2">5+</div>
+                                <div class="text-sm text-gray-600">Years Experience</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl p-10 shadow-xl">
+                    <h3 class="text-3xl font-bold font-poppins mb-8 text-center">Send a Message</h3>
+                    
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4 mb-8">
+                        <div class="flex items-start">
+                            <span class="text-yellow-500 text-xl mr-3">⚠️</span>
+                            <div>
+                                <p class="text-sm text-yellow-800 font-medium">Demo Contact Form</p>
+                                <p class="text-xs text-yellow-700">This is a sample form. In production, submissions would be handled by a backend service.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form onsubmit="handleFormSubmit(event)" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-3">Full Name</label>
+                                <input type="text" required class="form-input w-full px-6 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all" placeholder="Your full name">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-3">Email Address</label>
+                                <input type="email" required class="form-input w-full px-6 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all" placeholder="your@email.com">
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-3">Phone Number</label>
+                                <input type="tel" class="form-input w-full px-6 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all" placeholder="+1 (555) 123-4567">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-3">Service Needed</label>
+                                <select class="form-input w-full px-6 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all">
+                                    <option>Excel Dashboard</option>
+                                    <option>Power BI Report</option>
+                                    <option>Data Analysis</option>
+                                    <option>VBA Automation</option>
+                                    <option>Complete Solution</option>
+                                    <option>Consultation</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-3">Budget Range</label>
+                            <select class="form-input w-full px-6 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all">
+                                <option>$299 - $500 (Starter)</option>
+                                <option>$500 - $1,000 (Professional)</option>
+                                <option>$1,000 - $2,500 (Enterprise)</option>
+                                <option>$2,500+ (Custom Solution)</option>
+                                <option>Not sure yet</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-3">Project Details</label>
+                            <textarea rows="5" required class="form-input w-full px-6 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all resize-none" placeholder="Tell me about your project requirements, timeline, and any specific challenges you're facing..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full gradient-primary text-white py-5 rounded-2xl hover:opacity-90 transition-all font-bold text-lg btn-hover pulse-glow">
+                            <span class="flex items-center justify-center">
+                                Send Message
+                                <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                                </svg>
+                            </span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-12 h-12 gradient-primary rounded-xl flex items-center justify-center">
+                            <span class="text-white font-bold text-xl">📊</span>
+                        </div>
+                        <div>
+                            <span class="text-2xl font-bold font-poppins">DataViz Analytics</span>
+                            <p class="text-sm text-gray-400">Excel & Power BI Expert</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed mb-6">
+                        Transforming complex data into clear, actionable business intelligence. 
+                        Specializing in Microsoft Excel and Power BI solutions that drive results.
+                    </p>
+                    <div class="flex space-x-4">
+                        <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-all cursor-pointer">
+                            <span>📧</span>
+                        </div>
+                        <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-all cursor-pointer">
+                            <span>💼</span>
+                        </div>
+                        <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-all cursor-pointer">
+                            <span>📱</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Services</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="hover:text-white transition-all cursor-pointer">Excel Dashboards</li>
+                        <li class="hover:text-white transition-all cursor-pointer">Power BI Reports</li>
+                        <li class="hover:text-white transition-all cursor-pointer">Data Analysis</li>
+                        <li class="hover:text-white transition-all cursor-pointer">VBA Automation</li>
+                        <li class="hover:text-white transition-all cursor-pointer">Training & Support</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><button onclick="showSection('home')" class="hover:text-white transition-all">Home</button></li>
+                        <li><button onclick="showSection('portfolio')" class="hover:text-white transition-all">Portfolio</button></li>
+                        <li><button onclick="showSection('services')" class="hover:text-white transition-all">Services & Pricing</button></li>
+                        <li><button onclick="showSection('about')" class="hover:text-white transition-all">About</button></li>
+                        <li><button onclick="showSection('contact')" class="hover:text-white transition-all">Contact</button></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">
+                        &copy; 2024 DataViz Analytics. All rights reserved. Built with passion for data excellence.
+                    </p>
+                    <div class="flex space-x-6 mt-4 md:mt-0 text-sm text-gray-400">
+                        <span class="hover:text-white transition-all cursor-pointer">Privacy Policy</span>
+                        <span class="hover:text-white transition-all cursor-pointer">Terms of Service</span>
+                        <span class="hover:text-white transition-all cursor-pointer">Cookie Policy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation and Section Management
+        function showSection(sectionName) {
+            const sections = ['home', 'portfolio', 'services', 'about', 'contact'];
+            
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                element.classList.remove('section-active');
+                element.classList.add('section-hidden');
+            });
+            
+            const targetSection = document.getElementById(sectionName);
+            targetSection.classList.remove('section-hidden');
+            targetSection.classList.add('section-active');
+            
+            // Update navigation
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                btn.classList.remove('nav-active');
+            });
+            
+            const activeBtn = Array.from(navButtons).find(btn => 
+                btn.textContent.toLowerCase().includes(sectionName.toLowerCase())
+            );
+            if (activeBtn) {
+                activeBtn.classList.add('nav-active');
+            }
+            
+            // Close mobile menu
+            document.getElementById('mobile-menu').classList.add('hidden');
+            
+            // Smooth scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+        
+        // Portfolio Filter
+        function filterPortfolio(category) {
+            const items = document.querySelectorAll('.portfolio-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter items
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                    item.style.animation = 'fadeIn 0.5s ease-in';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+        
+        // Form Submission Handler
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            // Show loading state
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span class="loading-dots">Sending</span>';
+            submitBtn.disabled = true;
+            
+            // Simulate form processing
+            setTimeout(() => {
+                // Create success modal
+                const modal = document.createElement('div');
+                modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 fade-in';
+                modal.innerHTML = `
+                    <div class="bg-white rounded-3xl p-10 max-w-md mx-4 text-center shadow-2xl bounce-in">
+                        <div class="w-20 h-20 gradient-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                            <span class="text-4xl text-white">✅</span>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4 text-gray-800 font-poppins">Message Sent!</h3>
+                        <p class="text-gray-600 mb-8 leading-relaxed">
+                            Thank you for reaching out! I'll review your project details and get back to you within 24 hours with a detailed proposal.
+                        </p>
+                        <button onclick="this.parentElement.parentElement.remove()" class="gradient-primary text-white px-8 py-3 rounded-xl hover:opacity-90 transition-all font-bold btn-hover">
+                            Perfect!
+                        </button>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+                
+                // Reset form and button
+                event.target.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        }
+        
+        // Statistics Counter Animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const increment = target / 50;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.textContent = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+        
+        // Intersection Observer for Animations
+        function setupScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('slide-up');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+        }
+        
+        // Navbar Scroll Effect
+        function setupNavbarScroll() {
+            const navbar = document.querySelector('nav');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('bg-white/95');
+                    navbar.classList.remove('bg-white/90');
+                } else {
+                    navbar.classList.add('bg-white/90');
+                    navbar.classList.remove('bg-white/95');
+                }
+            });
+        }
+        
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Start counter animation after a delay
+            setTimeout(animateCounters, 1000);
+            
+            // Setup scroll animations
+            setupScrollAnimations();
+            
+            // Setup navbar scroll effect
+            setupNavbarScroll();
+            
+            // Add hover effects to interactive elements
+            const interactiveElements = document.querySelectorAll('.card-hover, .btn-hover');
+            interactiveElements.forEach(element => {
+                element.addEventListener('mouseenter', function() {
+                    this.style.transform = this.classList.contains('card-hover') ? 
+                        'translateY(-15px) scale(1.02)' : 'scale(1.05)';
+                });
+                
+                element.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+            
+            // Add particle animation
+            createParticles();
+        });
+        
+        // Create floating particles
+        function createParticles() {
+            const particleContainer = document.querySelector('.particles');
+            if (!particleContainer) return;
+            
+            setInterval(() => {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.width = Math.random() * 6 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDuration = Math.random() * 10 + 10 + 's';
+                
+                particleContainer.appendChild(particle);
+                
+                // Remove particle after animation
+                setTimeout(() => {
+                    particle.remove();
+                }, 15000);
+            }, 2000);
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add loading animation to buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                if (!this.disabled) {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 150);
+                }
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96bf8c55b6fbfdf7',t:'MTc1NDY2MTcxMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
